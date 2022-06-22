@@ -10,8 +10,17 @@ const truffleLibraryDirectory = path.join(
   __dirname,
   "../..",
   "node_modules",
-  "@truffle/resolver",
+  "@truffle",
+  "resolver",
   "solidity"
+);
+
+const truffleRequireDirectory = path.join(
+  __dirname,
+  "../..",
+  "node_modules",
+  "@truffle",
+  "require"
 );
 
 const commandsEntries = commands.reduce((a, command) => {
@@ -147,7 +156,9 @@ module.exports = {
     /^@truffle\/db-loader/,
     /^ganache$/,
     // this is the commands portion shared by cli.js and console-child.js
-    /^\.\/commands.bundled.js$/
+    /^\.\/commands.bundled.js$/,
+    /^ts-node$/,
+    /^typescript$/
   ],
 
   resolve: {
@@ -161,7 +172,7 @@ module.exports = {
         "bn.js"
       ),
       "original-fs": path.join(__dirname, "./nil.js"),
-      scrypt: "js-scrypt"
+      "scrypt": "js-scrypt"
     }
   },
 
@@ -265,6 +276,9 @@ module.exports = {
             "dashboard-frontend"
           ),
           to: "dashboard-frontend"
+        },
+        {
+          from: path.join(truffleRequireDirectory, "scriptGlobals.ts")
         }
       ]
     }),
