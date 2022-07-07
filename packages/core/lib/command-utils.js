@@ -48,7 +48,12 @@ const getCommand = ({ inputStrings, options, noAliases }) => {
   }
 
   if (chosenCommand == null) {
-    return null;
+    //error out and exit when we cannot find any command that matches.
+    let err = new Error(
+      `\`truffle ${firstInputString}\` is not a valid truffle command. Please see \`truffle help\` for available commands.`
+    );
+    console.log(err.message);
+    process.exit(err);
   }
 
   // determine whether Truffle is being run from the bundle or from ./cli.js
