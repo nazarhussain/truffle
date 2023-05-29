@@ -38,7 +38,10 @@ module.exports = {
       os: require.resolve("os-browserify/browser"),
       path: require.resolve("path-browserify"),
       stream: require.resolve("stream-browserify"),
-      vm: require.resolve("vm-browserify")
+      vm: require.resolve("vm-browserify"),
+      buffer: require.resolve("buffer/"),
+      events: require.resolve("events/"),
+      browser: false
     }
   }
 };
